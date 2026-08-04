@@ -1,0 +1,25 @@
+# Local build output (do not sync to Overleaf)
+build/
+build_diff/
+response_letter/build/
+
+# LaTeX aux files, in case of in-place compilation
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.toc
+*.spl
+
+# Compiled PDFs: build.sh regenerates them, and Overleaf compiles on its own
+elsarticle-template-num-names.pdf
+response_letter/response_letter.pdf
+versions/v1_submitted/v1_submitted.pdf
+
+# Local working folders, not part of the manuscript
+recovered_edits/
+images/_originali_pre_revisione/

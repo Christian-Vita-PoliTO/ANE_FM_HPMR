@@ -1,0 +1,187 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\definecolor{revtwo}{RGB}{0,90,200}
+\definecolor{revthree}{RGB}{200,90,0}
+\usepackage{parskip}
+\usepackage[hidelinks]{hyperref}
+
+\newenvironment{reviewer}%
+  {\medskip\begin{quote}\itshape\color{black!70}}%
+  {\end{quote}}
+
+\newcommand{\answer}{\textbf{Response.}\ }
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[DA COMPLETARE: #1]}}}
+
+\title{Response to the Reviewers}
+\author{}
+\date{}
+
+\begin{document}
+
+\noindent
+\textbf{Manuscript:} The Fission Matrix Method for Criticality Search in Heat-Pipe Micro Reactors\\
+\textbf{Authors:} Christian Vita et al.\\
+\textbf{Journal:} Annals of Nuclear Energy
+
+\bigskip
+
+\noindent
+Dear Editor,
+
+We would like to thank you and the Reviewers for the time dedicated to our manuscript and for the detailed comments, which helped us to considerably improve the quality of the work. In the following, each comment is reported in italics and is followed by our response. All the page and line numbers refer to the revised manuscript, in which line numbering has been activated.
+
+The parts of the manuscript that have been modified are highlighted using two different colours, according to the Reviewer whose comment motivated the change. The text written in \textcolor{revtwo}{\textbf{blue}} corresponds to the modifications introduced in response to Reviewer 2, while the text written in \textcolor{revthree}{\textbf{orange}} corresponds to those introduced in response to Reviewer 3. The corrections of typographical errors and the changes of terminology are single-word modifications distributed throughout the whole text and are not individually highlighted, in order to keep the manuscript readable; they are all reported in the marked-up version of the manuscript that accompanies this letter, in which every single difference with respect to the submitted version is shown.
+
+We would like to point out that two of the comments raised by Reviewer 2 led us to identify inconsistencies in the equations defining the reflector correction ratio. Resolving them required stating explicitly a point that had been left implicit in the submitted version, namely how the local temperature difference entering the correction is defined. All the result tables have consequently been recomputed from the original data with a single, uniform definition, and a number of entries have changed. The conclusions of the work are unchanged and, where the values differ, the agreement with the reference calculations is closer than in the submitted version. The equations have been corrected and a detailed derivation has been added, as requested. While revising this part we also noticed a sign error in the expression giving the maximum admissible power, Eq. (9) of the revised manuscript, which has been corrected; the implementation used the correct form, so no result is affected.
+
+\bigskip
+
+\hrule
+\bigskip
+
+\section*{Reviewer 2}
+
+\begin{reviewer}
+The derivation and physical interpretation of the correction ratio introduced in Eqs. (4) and (5) should be explained in much greater detail. As currently written, the formulation is not sufficiently clear, and the consistency of the correction ratio is difficult to verify. In particular, the ratio in Eqs. (4) and (5) appears to be written as $\tilde{a}/a^{\Delta}(T)$, whereas, from an intuitive consistency argument, one might expect the inverse form, $a^{\Delta}(T)/\tilde{a}$. This would ensure that, for the limiting case where $T_{max,DB} = T_f = 1000$ K, $T_{min,DB} = T_r = 300$ K, the corrected matrix element satisfies $a^{*} = r \tilde{a} = a^{\Delta}(T)$. This limiting behavior would make the formulation self-consistent. If the authors intended a different definition or normalization of $a^{\Delta}(T)$, this should be clearly stated. Otherwise, the present form of Eqs. (4) and (5) appears potentially inconsistent. The authors should provide a detailed derivation of Eqs. (4) and (5), including the assumptions used, the limiting cases considered, and the expected behavior when the fuel and reflector temperatures correspond exactly to the correction reference case.
+\end{reviewer}
+
+\answer The Reviewer is correct. The ratio was inverted when the equations were transcribed into the manuscript: the implementation used for all the results computes it as $a^{\Delta T}_{i,j} / \tilde{a}_{i,j}$, exactly the form indicated, so no result is affected.
+
+Revising the equations we also found that the weight multiplying the ratio was not defined consistently: the temperature difference of cell $i$ in the manuscript, that of cell $j$ in the implementation. It is now defined as the average of the two local temperature differences. The single-index forms give larger deviations where the temperature difference is not spatially uniform, $-165$ pcm and $+104$ pcm against $-31$ pcm in Case 5, and coincide with the symmetric one where it is.
+
+Both equations have been rewritten. Eq. (4) now reads
+%
+\begin{equation*}
+r_{i,j}(\Delta T_i, \Delta T_j, \theta) = \frac{1}{2}\,\frac{\Delta T_i + \Delta T_j}{T_{max,DB} - T_{min,DB}} \cdot \left( \frac{ a_{i,j}^{\Delta T}}{\tilde{a}_{i,j}(T_{f,i}, \theta)} - 1 \right) + 1 ,
+\end{equation*}
+%
+and Eq. (5) of the submitted version, now Eq. (6), has been corrected in the same way.
+
+The derivation has been added to Section 3.4, at page 10, line 192, with the two assumptions on which the correction relies at page 10, line 200. The limiting cases are given at page 11, line 221: when fuel and reflector are at the same temperature the weight vanishes and $r_{i,j}=1$, so the interpolated matrix is left unchanged; when the local difference equals that of the reference case the weight is unity and
+%
+\begin{equation*}
+\tilde{a}^{*}_{i,j} = r_{i,j}\,\tilde{a}_{i,j} = a^{\Delta T}_{i,j} ,
+\end{equation*}
+%
+which is the behaviour indicated by the Reviewer, now reported as Eq. (5). A remark added after Eq. (6), at page 13, line 259, states that the same holds for the second formulation.
+\begin{reviewer}
+The fission matrix database is generated using Serpent 2 Monte Carlo calculations. Therefore, each element of the FMDB has an associated statistical uncertainty. However, the manuscript does not quantify how the statistical uncertainties of the individual fission matrix elements propagate to the predicted $k_{eff}$ and fission source distribution. [\ldots] The authors are encouraged to include an uncertainty propagation analysis, repeated FMDB generation with independent random seeds, bootstrap analysis, or another suitable statistical approach.
+\end{reviewer}
+
+\answer We agree that this uncertainty has to be quantified. The procedure is described in a new Section 3.8 and the resulting budget is reported in Table 5, discussed in Section 4.4. Two independent contributions are considered: the reference calculation, for which Serpent 2 reports the uncertainty directly, on the multiplication factor and, through the fission source detector, cell by cell; and the interpolated matrix, which has no replicas of its own.
+
+The second is estimated by resampling the database, following He and Walters (\textit{Nucl. Sci. Eng.} \textbf{196}, 1101--1113, 2022). Five hundred realizations of the database are drawn from the tallied values and uncertainties, and the interpolation, the correction ratio and the eigenvalue problem are rebuilt from each of them. No Monte Carlo calculation is required beyond the database the method already needs, which is why this route was preferred to a repeated generation of the database. Coefficients are resampled independently of one another, which makes the estimate conservative.
+
+The two contributions are combined in quadrature. The resulting uncertainty on the multiplication factor is between 25 and 37 pcm, of which the database contributes between 17 and 32 pcm; on the fission source the database contribution is the larger of the two, 0.28\% to 0.55\% against about 0.20\% for the reference. Against these values the deviations obtained with the correction remain within roughly 1.2 standard deviations in all seven cases. The local deviations shown in the figures are now expressed in units of this combined uncertainty, and the cells that do not exceed twice this value are drawn as transparent outlines.
+\begin{reviewer}
+There are many errors in the referencing of figures, tables, and bibliography entries. [\ldots] Figure 5 and Figure 9 appear to have essentially the same caption, although they show different information. The caption of Figure 9 should be revised. In addition, Figure 9 does not appear to be properly referenced in the main text.
+\end{reviewer}
+
+\answer The Reviewer is right. The caption of Figure 9 had been copied from that of Figure 5 and has been rewritten to describe the actual content, the temperature field obtained with a high-fidelity MOOSE simulation together with its profile across the active region and the reflector.
+
+The figure was indeed never referenced. This has been corrected at page 29, line 498, where it is now called when the parameters of Case 7 are introduced.
+\begin{reviewer}
+The discussion of Table 5 is insufficient in the main text. The table is mainly referred to in the conclusion, and it is not clear whether some discussion of the results was omitted from Section 4.4. The authors should check whether the explanation of Table 5 is complete and properly placed.
+\end{reviewer}
+
+\answer In Section 4.5 the sentence introducing the results of the four additional test cases referenced, by mistake, the figure with the temperature distributions of Cases 5 to 7 instead of the results table, which in the revised manuscript is Table 6. The cross-reference has been corrected.
+
+The discussion has also been extended at page 34, line 553. It reports that the deviation of the multiplication factor at the critical drum position ranges between $-20$ pcm and 38 pcm, of the same order of magnitude as the statistical uncertainty of the reference, between 15 and 19 pcm, and that the agreement on the fission source is preserved, with an RMSE not exceeding 0.8\% and a maximum local deviation of 2.2\%. Both fission source metrics increase monotonically with the power level, while the deviation on the multiplication factor does not show a monotonic trend.
+\begin{reviewer}
+The reference list requires significant correction. For example: Reference [2] is incomplete. [\ldots] Reference [9] is not properly formatted and appears to contain multiple references merged into one entry. Reference [11] appears to be missing or incorrectly numbered in the reference list. Reference [12], which appears to be a thesis or dissertation, should be formatted according to the journal's required reference style. References [6] and [18] appear to be duplicates and should be consolidated.
+\end{reviewer}
+
+\answer We thank the Reviewer for the detailed list. All the reported problems have been corrected and the whole reference list has been checked entry by entry. Entries [9] and [11] were merged with the following ones by a bibliography type not supported by the \texttt{elsarticle} style, which has been corrected. Reference [12] has been formatted as a doctoral dissertation, and references [6] and [18], the same paper entered twice under different keys, have been consolidated. Reference [2] could not be completed reliably and has been removed; the statement it supported is covered by the other references cited in the same sentence. The numbering of the list has changed as a consequence, so the numbers used by the Reviewer refer to the submitted version.
+
+As anticipated above, this comment also prompted us to recompute every entry of the result tables from the original data, with the uniform definition of the local temperature difference now stated in Section 3.4. Several entries of Tables 3 and 4 have changed, and the deviations on the multiplication factor obtained with the correction are now between $-31$ pcm and 33 pcm across the seven cases.
+
+In the same revision the fission source is normalised to its sum rather than to its maximum, which is what makes the cell-wise comparison with the reference statistics meaningful. The deviations on the multiplication factor are unaffected by this choice; the fission source metrics change slightly and have been updated.
+
+Case 7 has also been redefined: it is now given by the available reference calculation, in which the reflector is not isothermal but carries a temperature profile of its own. The recomputation also revealed four values transcribed incorrectly. In Table 3 these are the RMSE of Case 1 with the first formulation, now 0.48\% instead of 0.53\%, and the maximum local deviations of Case 2 with the second formulation and of Case 3 with the first one, now 1.7\% and 1.8\% instead of 0.53\% and 5.0\%. In Table 4 it is the maximum local deviation of the uncorrected Case 6, now 7.6\% instead of 2.4\%, the previous value being smaller than the corresponding RMSE, which is not possible. None of these corrections affects the multiplication factor deviations or the conclusions drawn from the tables.
+
+\begin{reviewer}
+The terminology used for the reflector correction ratio is inconsistent throughout the manuscript. The same concept appears to be referred to as RCR, CTC, CR, and ``$r_{ij}$ def. 2'' in different places. The authors should use one consistent term throughout the manuscript. I recommend using ``RCR'' consistently for ``Reflector Correction Ratio.''
+\end{reviewer}
+
+\answer We agree with the Reviewer and we have adopted the recommended terminology. The acronym RCR is now introduced at its first occurrence and used consistently throughout the manuscript, including the headings of the result tables, where the entries previously labelled ``CR'' and ``$r_{ij}$ def. 2'' now report ``RCR'' followed by the number of the equation used. The expression ``correction factor'' has been replaced as well.
+
+Regarding the acronym reported by the Reviewer as ``CTC'', the submitted version used ``CRC'', for ``Correction Ratio Calculation'', in the description of the computational effort required by the database. It has been removed as well.
+
+\begin{reviewer}
+The manuscript contains many typographical and grammatical errors. The authors should carefully proofread the entire manuscript before resubmission. [\ldots] In addition to correcting these specific examples, the manuscript would benefit from a thorough language edit to improve clarity, grammar, and readability.
+\end{reviewer}
+
+\answer All the typographical errors listed by the Reviewer have been corrected, and the whole manuscript has been proofread. In addition to the reported ones, further errors of the same kind were found and corrected, including ``improvment'', the inconsistent use of ``Serpent2'' and ``Serpent 2'', and a mixed use of British and American spelling, which has been made uniform.
+
+The expression ``9090 = 8100 elements'' was caused by a multiplication sign that was not rendered in the compiled document; it is now correctly typeset as $90 \times 90 = 8100$.
+
+\bigskip
+\hrule
+\bigskip
+
+\section*{Reviewer 3}
+
+\begin{reviewer}
+This paper try to apply the fission matrix method to HP micro reactors to achieve efficient and high-accuracy results. However, this paper lack innovation for publication in this journal. All the techniques the author proposed in this article, you can basically find them in other RAPID-related work, such as temperature interpolation, reflector correction ratio and such.
+\end{reviewer}
+
+\answer We thank the Reviewer for this comment, which gave us the opportunity to state the specific contribution of this work more clearly. We agree that the fission matrix methodology, the interpolation of the coefficients as a function of temperature and the treatment of the reflector have been addressed before, in particular within the framework of the RAPID code system, and these contributions are acknowledged and cited in the manuscript. We would like, however, to point out a number of aspects that distinguish the present work.
+
+The first one concerns the way in which the fission matrix coefficients are generated. The approach adopted here is deliberately more direct than the one on which RAPID is based: the fission matrix is tallied and stored directly from a Monte Carlo criticality calculation of the whole system, without reconstructing the coefficients from pre-computed response functions. This choice has consequences on the entire method, because each database entry is a self-consistent representation of the full system in a given configuration, and it is the reason why the database can be kept relatively small while still covering a wide range of operating conditions through interpolation.
+
+The second aspect is that this work proposes a systematic framework for the specific case of a heat-pipe microreactor, in which the fission matrix is interpolated simultaneously on two parameters, the system temperature and the angular position of the control drums. The double interpolation, and the way in which the database has to be organized to support it, is addressed here in a systematic way, including the study of the database density required to obtain a given accuracy.
+
+The third aspect, and the one we consider the most relevant, concerns the role of the reflector. The fission matrix coefficients are defined between fissile cells only, by the very nature of the fission matrix formalism. As a consequence, the temperature of the reflector, which is not a fissile region, does not enter the interpolation at all, even though it has a strong effect on the neutron economy of a compact core surrounded by a thick reflector. This is a structural limitation of the method rather than an implementation detail, and it becomes particularly important in a heat-pipe microreactor, where the control drums are located inside the reflector itself, so that the region which is not represented in the interpolation is also the region that controls the reactivity of the system. In the manuscript we quantify the accuracy loss caused by this limitation, and we show that it becomes significant when a large temperature difference between the core and the reflector is present.
+
+The solution we propose is designed with the explicit constraint of preserving the advantage of the adopted data generation strategy, that is, of keeping the database limited in size while covering a wide range of cases. For this reason the reflector correction ratio is built on a single additional reference calculation per drum position, instead of extending the database with an additional dimension associated with the reflector temperature, which would multiply the number of Monte Carlo calculations required. The accuracy of the resulting correction is then assessed on test cases with imposed temperature gradients and with non-uniform temperature distributions, and finally applied to a criticality search over a range of power levels.
+
+% \todo{verifica che la descrizione del funzionamento di RAPID sia corretta e sufficientemente prudente prima di inviare, in particolare l'affermazione sulle response function}
+
+\begin{reviewer}
+For micro reactor, reflector ratio is actually quiet different from that in PWR (where a 2D/1D reflector ration is applied). However, this does not quiet work in micro reactor because axial and radial ratios are closely related. The author does not specify whether it is a 3D or 2D reflector ratio (looks like a 2D because it says $r_{i,j}$). A 3D correction ratio might also cause some issues because it requires too many particles to be simulated to reduce MC uncertainty. The computational cost might even be more than the MC criticality calculation in micro reactor, which makes the method less appealing.
+\end{reviewer}
+
+\answer We thank the Reviewer for raising this point, which showed us that the description of the spatial discretization was not sufficiently clear. The correction ratio adopted in this work is fully three-dimensional. The indices $i$ and $j$ do not refer to a radial mesh, but to the cells of the fission matrix, which are obtained by discretizing the core into 30 fuel assemblies and 3 axial regions, for a total of 90 three-dimensional cells. Each coefficient $r_{i,j}$ therefore connects two three-dimensional regions, and the axial and radial effects are treated simultaneously and are not separated into distinct factors. The temperature difference entering the weight is likewise defined cell by cell, so that assemblies at different axial positions can have different corrections. We have made this explicit in the revised manuscript at page 6, line 118, since if the notation was misleading for the Reviewer it is likely to be misleading for other readers as well.
+
+Concerning the computational cost, we agree that this is the aspect that determines whether the method is appealing or not, and it is for this reason that it is quantified in the manuscript. The correction requires one additional Monte Carlo calculation for each drum position, that is $N_\theta$ additional runs against the $N_T N_\theta$ runs needed for the database itself, as reported in the manuscript. The total computational effort is reported in Table 7 of the revised manuscript.
+
+We would also like to address the underlying concern more directly. The database of this work is built from whole-core criticality calculations, so the statistical uncertainty of its coefficients is indeed tied to the number of simulated histories and therefore to the computational effort. That uncertainty is not left implicit: it is now propagated to the interpolated results and combined with the statistical uncertainty of the reference calculation, as described in our response to the corresponding comment of Reviewer 2. Judged against that combined figure, the effect of the correction is well above the statistical noise.
+
+It should also be noted that the correction proposed here does not require a resolved treatment of the reflector: a single calculation per drum position provides the ratio between the active region and the reflector as a whole. This does not exclude that a finer treatment may be worth investigating in the future, for instance by zoning the reflector and separating its radial and axial parts, which are treated jointly here. The aim of the present work, however, was to bring this effect to light and to propose a remedy that preserves what we consider the main advantage of the framework, namely the relative simplicity with which the database is constructed.
+
+It should also be stressed that this cost is paid once, when the database is generated, and it is then amortized over all the subsequent evaluations, which are performed in about one second on a single core. The comparison that determines the convenience of the approach is therefore not between one correction calculation and one Monte Carlo criticality calculation, but between the generation of the database and the number of configurations that have to be evaluated afterwards.
+
+\begin{reviewer}
+There is no thermal calculation description in this paper, including thermal conduction and heat pipe model.
+\end{reviewer}
+
+\answer The Reviewer is correct in observing that no thermal model is described in the manuscript, and we would like to clarify the reason. No thermal calculation is performed in this work. The temperature distributions used in the test cases are prescribed inputs, defined either analytically, as in the cases with imposed gradients, or through the correlation between power and fuel temperature described in Section 3.5, which is explicitly introduced as a mockup and not as a thermal model. The parameters of that correlation are derived from a high-fidelity MOOSE simulation, which is now shown in Figure 9.
+
+We would like to stress that this choice does not affect the assessment of the method, because the reference Serpent 2 calculations are performed with exactly the same prescribed temperature distributions. The comparison is therefore self-consistent, and the deviations reported in the manuscript measure the accuracy of the fission matrix interpolation and of the reflector correction, and not the accuracy of a thermal model. Introducing a conduction and heat pipe model would change the temperature distributions used both by the proposed method and by the reference calculations, leaving the assessment unchanged.
+
+Following the suggestion of the Reviewer, we have made this point explicit in the revised manuscript at page 14, line 276, since the question may occur to other readers as well.
+
+We agree that the coupling with a thermal model, and in particular with a heat pipe model, is the natural continuation of this work, and this is mentioned among the future developments.
+
+\begin{reviewer}
+There are many typos in this work and I would suggest the author to carefully check before submitting.
+\end{reviewer}
+
+\answer We apologize for the number of typographical errors present in the submitted version. The manuscript has been entirely proofread and the errors have been corrected, as detailed in our response to the corresponding comment of Reviewer 2.
+
+\bigskip
+
+\noindent
+We hope that the revised manuscript addresses all the points raised, and we remain available for any further clarification.
+
+\bigskip
+
+\noindent
+Yours sincerely,\\
+Christian Vita, on behalf of all the authors
+
+\end{document}

@@ -40,19 +40,19 @@ keywords = {Framework, Finite-element, Finite-volume, Parallel, Multiphysics, Mu
 	file = {Mascolino and Haghighat - 2024 - A Novel Hybrid Deterministic and Monte Carlo Neutron Transport Formulation and Algorithm (tRAPID) fo.pdf:C\:\\Users\\User\\Zotero\\storage\\WA4K6PWG\\Mascolino and Haghighat - 2024 - A Novel Hybrid Deterministic and Monte Carlo Neutron Transport Formulation and Algorithm (tRAPID) fo.pdf:application/pdf},
 }
 
-@misc{VRS_RAPID,
+@online{VRS_RAPID,
   author  = {{Virginia Tech Nuclear Engineering Program}},
   title   = {VRS-RAPID: Virtual Reality System for the RAPID Code},
   url     = {https://vrs.ncr.vt.edu/rapid.html#VRS},
-  note    = {Accessed: May 18, 2026}
+  urldate = {2026-05-18}
 }
 
-@misc{moose_vtb_mrad_description,
-  author = {{MOOSE Development Team} and {Idaho National Laboratory}},
-  title  = {Heat Pipe Micro Reactor (MR) Description - Virtual Test Bed (VTB)},
-  url    = {https://mooseframework.inl.gov/virtual_test_bed/microreactors/mrad/reactor_description.html},
-  year   = {2026},
-  note   = {Accessed: May 20, 2026}
+@online{moose_vtb_mrad_description,
+  author       = {{MOOSE Development Team} and {Idaho National Laboratory}},
+  title        = {Heat Pipe Micro Reactor (MR) Description - Virtual Test Bed (VTB)},
+  howpublished = {\url{https://mooseframework.inl.gov/virtual_test_bed/microreactors/mrad/reactor_description.html}},
+  year         = {2026},
+  note         = {Accessed: May 20, 2026}
 }
 
 @ARTICLE{2020SciPy-NMeth,
@@ -93,6 +93,16 @@ keywords = {Fission-matrix, TRIGA, TRACE, Multi-physics, Serpent},
 abstract = {A new method for calculating power shape and critical control rod position is described and validated in view of increasing the fidelity of the Penn State Breazeale Reactor's (PSBR) fuel management code. Currently, the PSBR fuel management code is biased against experimental results and requires the use of empirical correction factors. This is likely due to a combination of assumptions, such as the control rods being fixed in the all-out position and the use of a uniform fuel temperature. The proposed method supplies this data using fission-matrix-based neutronics coupled with TRACE thermal-hydraulics. The fission-matrix-based neutronics relies on Serpent for precalculation of fission matrices. Steady-state fuel temperature distributions, power shapes, and control rod positions are calculated through iteration between TRACE and fission matrix calculations. Validation is performed on the coupled TRACE-fission matrix model for powers ranging from 50 kW to 1 MW. For these cases, the RMS average error with experimental data is 12.7 K for instrumented element fuel temperature and $0.07 for reactivity change. Agreement is generally within estimated experimental uncertainty. The effect of various modeling parameters, such as the fuel-cladding gap heat transfer coefficient and the exact radial location of the instrumented element thermocouple, are shown. Finally, the impact of this increased modeling fidelity on the depletion calculation is estimated. In the future, this validation should be repeated on later core loadings of the PSBR where more detailed experimental data is available. Comparison between the current PSBR fuel management code and the proposed model should also be made.}
 }
 
+@article{Walter00,
+   abstract = {This paper presents utilization of the fission matrix (FM) methodology to analyze a spent fuel pool. This FM approach utilizes a pre-calculated MCNP-generated database of fission matrix coefficients which are created at different burnups and cooling times. Certain simplifying assumptions are made based on geometric and physical considerations, greatly reducing the amount of pre-computation required. This approach is capable of quickly and accurately determine pin-wise, axial-dependent fission density distribution and subcritical multiplication (M) or criticality (k) of a spent fuel pool, in any arrangement, without recalculating FM coefficients. This paper examines the use of the FM approach for different test pool arrangements and conditions. Excellent agreements with an MCNP reference calculation have been achieved with several orders of magnitude reduction in computation time.},
+   author = {William Walters and Nathan Roskoff and Alireza Haghighat},
+   keywords = {eigenvalue,fission matrix,spent fuel,subcritical},
+   publisher = {American Nuclear Society},
+   title = {Supercomputing in Nuclear Applications (SNA) and the Monte Carlo (MC)},
+   url = {www.nsel.ncr.vt.edu},
+}
+
+
 @article{LAUREAU2017112,
 title = {Transient coupled calculations of the Molten Salt Fast Reactor using the Transient Fission Matrix approach},
 journal = {Nuclear Engineering and Design},
@@ -121,7 +131,10 @@ abstract = {In this paper we present transient studies of the Molten Salt Fast R
    year = {2024},
 }
 
-@article{Pungercic,
+
+
+
+@article{Pungerčič,
    abstract = {The Real-time Analysis for Particle-transport and In-situ Detection (RAPID) Code System, developed based on the Multi-stage Response-function Transport (MRT) methodology, enables real-time simulation of nuclear systems such as reactor cores, spent nuclear fuel pools and casks, and sub-critical facilities. This paper presents the application of a novel fission matrix-based burnup methodology to the well-characterized JSI TRIGA Mark II research reactor. This methodology allows for calculation of nuclear fuel depletion by combination and interpolation of RAPID's burnup dependent fission matrix (FM) coefficients to take into account core changes due to burnup. The methodology is compared to experimentally validated Serpent-2 Monte Carlo depletion calculations. The results show that the burnup methodology for RAPID (bRAPID) implemented into RAPID is capable of accurately calculating the keff burnup changes of the reactor core as the average discrepancies throughout the whole burnup interval are 37 pcm. Furthermore, capability of accurately describing 3D fission source distribution changes with burnup is demonstrated by having less than 1% relative discrepancies compared to Serpent-2. Good agreement is observed for axially and pin-wise dependent fuel burnup and nuclear fuel nuclide composition as a function of burnup. It is demonstrated that bRAPID accurately describes burnup in areas with high gradients of neutron flux (e.g. vicinity of control rods). Observed discrepancies for some isotopes are explained by analyzing the neutron spectrum. This paper presents a powerful depletion calculation tool that is capable of characterization of spent nuclear fuel on the fly while the reactor is in operation.},
    author = {Anže Pungerčič and Valerio Mascolino and Alireza Haghighat and Luka Snoj},
    doi = {10.1016/j.net.2023.06.040},
@@ -137,12 +150,18 @@ abstract = {In this paper we present transient studies of the Molten Salt Fast R
    year = {2023},
 }
 
+
+
+
+
 @phdthesis{Roskoff2018,
     author ={Nathan J Roskoff},
     title = {Development of a Novel Fuel Burnup Methodology and Algorithm in RAPID and its Benchmarking and Automation} ,
     school = {Virginia TEC} ,
     year = 2018
 }
+
+
 
 @article{Rau2021Proc,
    abstract = {Monte Carlo methods are useful for simulating new reactor designs, but even with advances in computing, these methods still require a significant amount of time to perform transient or multiphysics calculations coupled with thermal modeling. This work demonstrates a hybrid reactor physics method that uses Monte Carlo to precalculate an initial database of fission matrix parameters, then combines these results for fast calculations on arbitrary system states. This paper extends previous work that demonstrated these methods on the Penn State Breazeale Reactor (PSBR). Approaches for reducing time and memory cost and increasing the accuracy in reproducing Monte Carlo output are considered. For modeling fuel temperature, a representative temperature distribution is used while tallying the initial fission matrix database. Different approaches for modeling the coupling between individual control rod insertions as well as control and fuel temperature effects are presented as well. Individual solutions are completed in less than 1 s on a single core, and error with respect to Monte Carlo is within 35 pcm for multiplication factor, 0.6% root-mean square, and 2.8% maximum for the normalized three-dimensional fission source distribution on critical, steady-state configurations. Further qualification on different reactor types is needed, but the simplicity and flexibility of this method make further development promising.},
@@ -159,6 +178,27 @@ abstract = {In this paper we present transient studies of the Molten Salt Fast R
    year = {2021},
 }
 
+
+
+
+@article{Rau2021,
+   abstract = {Monte Carlo methods are useful for simulating new reactor designs, but even with advances in computing, these methods still require a significant amount of time to perform transient or multiphysics calculations coupled with thermal modeling. This work demonstrates a hybrid reactor physics method that uses Monte Carlo to precalculate an initial database of fission matrix parameters, then combines these results for fast calculations on arbitrary system states. This paper extends previous work that demonstrated these methods on the Penn State Breazeale Reactor (PSBR). Approaches for reducing time and memory cost and increasing the accuracy in reproducing Monte Carlo output are considered. For modeling fuel temperature, a representative temperature distribution is used while tallying the initial fission matrix database. Different approaches for modeling the coupling between individual control rod insertions as well as control and fuel temperature effects are presented as well. Individual solutions are completed in less than 1 s on a single core, and error with respect to Monte Carlo is within 35 pcm for multiplication factor, 0.6% root-mean square, and 2.8% maximum for the normalized three-dimensional fission source distribution on critical, steady-state configurations. Further qualification on different reactor types is needed, but the simplicity and flexibility of this method make further development promising.},
+   author = {Adam J. Rau and William J. Walters},
+   doi = {10.1080/00295639.2021.1905431},
+   issn = {1943748X},
+   issue = {10},
+   journal = {Nuclear Science and Engineering},
+   keywords = {Fission matrix,Serpent, multiphysics,TRIGA},
+   pages = {1017-1035},
+   publisher = {Taylor and Francis Ltd.},
+   title = {Strategies for Fast Fission Matrix Estimation with Fuel Temperature and Control Rod Feedback},
+   volume = {195},
+   year = {2021},
+}
+
+
+
+
 @article{LEPPANEN2025,
 title = {Status of Serpent Monte Carlo code in 2024},
 journal = {EPJ - Nuclear Sciences and Technologies},
@@ -170,6 +210,8 @@ url = {https://www.sciencedirect.com/science/article/pii/S2491929225000032},
 author = {Jaakko Leppänen and Ville Valtavirta and Antti Rintala and Riku Tuominen},
 abstract = {The Serpent Monte Carlo code has been in public distribution for 15 years, and has a large international user basis with both research and commercial applications. Serpent is currently developed as part of the Kraken multi-physics framework, which has dedicated capabilities for core-level reactor physics analyses. In Kraken, Serpent can be used either as a high-fidelity neutronics solver, or for generating homogenized group constants for the Ants nodal neutronics code. The neutron and photon transport modes in Serpent enable using the code also for various stand-alone applications beyond reactor physics, such as radiation shielding and fusion neutronics. This paper presents a review of the current status and capabilities of Serpent, corresponding to the latest release 2.2.1. The main features are introduced, with references to publications with more detailed methodological descriptions.}
 }
+
+
 
 @article{He2023,
    abstract = {The Monte Carlo neutron transport method is widely used in small advanced reactor core designs and optimizations but with a high computational cost. As an efficient and accurate neutron transport method, the combined fission matrix method is promising in small reactor design and optimization. However, it cannot well predict the strong reflector impact on the fission matrix in small reactors. A predictor–corrector correction ratio method is proposed in this work to solve the problem. The method will be validated in the Holos and Simons transportable small reactors. Compared to the Monte Carlo result, the combined fission matrix method has a 36 pcm keff error with 1.7% 2D RMSE in the Holos core and 9 pcm keff error with 0.3% 2D RMSE in the Simons core. With a similar accuracy, the combined fission matrix method is much faster than the Monte Carlo method.},
@@ -184,7 +226,12 @@ abstract = {The Serpent Monte Carlo code has been in public distribution for 15 
    volume = {180},
    year = {2023},
 }
-
+@article{Haghighat2018,
+   author = {Alireza Haghighat},
+   title = {A Novel Detector Response Formulation for RAPID},
+   url = {https://www.researchgate.net/publication/326250674},
+   year = {2018},
+}
 @article{Mascolino2022,
    abstract = {The Real-time Analysis for Particle-transport and In-situ Detection (RAPID) Code System, developed based on the Multi-stage Response-function Transport (MRT) methodology, allows for real-time simulation of nuclear systems such as reactor cores, spent nuclear fuel pools and casks, and subcritical facilities. This paper presents a novel methodology for modeling control rods movement within the RAPID's Fission Matrix (FM) formulation. This methodology, referred to as FM Control Rods “deltas” (FM-CRd), allows for combination and interpolation of RAPID's FM coefficients to take into account the effect of inserting the control rods into the reactor core, while simultaneously limiting the amount of pre-calculations required. The FM-CRd methodology is benchmarked against experimental data from the JSI TRIGA ICSBEP benchmark and reference Serpent continuous-energy Monte Carlo calculations. The results show that RAPID's FM-CRd can accurately calculate 3-D fission source distribution and keff in the JSI TRIGA in a matter of seconds, hence constituting a powerful analysis tool for online analysis of the reactor during experiments.},
    author = {Valerio Mascolino and Alireza Haghighat and Luka Snoj},
@@ -245,6 +292,23 @@ abstract = {The Serpent Monte Carlo code has been in public distribution for 15 
    title = {Analysis of Fission Matrix Databases with Nonuniform Fuel Temperature Profiles for Static and Transient Calculations},
    year = {2024},
 }
+@misc{,
+   title = {USE OF THE FISSION MATRIX FOR STEADY STATE AND QUASI-STATIC KINETIC MODELING OF THE TREAT REACTOR WITH TEMPERATURE FEEDBACK},
+   year = {2019},
+}
+@article{He2020,
+   abstract = {The fission matrix based radiation transport code RAPID is able to perform high fidelity and fast 3D, pin-wise whole core calculations. The code can quickly estimate the system fission matrix by combining pre-calculated database fission matrices, and solving for the system fission matrix provides the multiplication factor and a detailed fission distribution. In this work, RAPID acceleration and numerical techniques will be examined. These are the fission matrix collapsing or homogenization options, choice of the power iteration tolerance and estimation of iterative error. In old RAPID calculations, in order to achieve a fast power iteration convergence of the whole core fission matrix, the pin-wise fission matrix is collapsed into an assembly-wise one following a 2-D pin-wise core slice calculation. In addition to the radial collapsing from pin to assembly, other radial and axial collapsing options are tested to find out the best balance between accuracy and speedup. Applying the fission matrix collapsing technique, RAPID requires at least two eigenvalue calculations. Different tolerances of the 2-D and 3-D power iteration calculations are combined to investigate the convergence. A more sophisticated method to estimate the iterative error is provided to determine the convergence. Overall, a combination of all acceleration techniques speeds up the RAPID calculation on BEAVRS benchmark problem by three times, with only a negligible loss of accuracy.},
+   author = {Donghao He and William J. Walters},
+   doi = {10.1016/j.pnucene.2020.103407},
+   issn = {01491970},
+   journal = {Progress in Nuclear Energy},
+   keywords = {Acceleration,Fission matrix,RAPID},
+   month = {8},
+   publisher = {Elsevier Ltd},
+   title = {Fission matrix homogenization and iterative convergence in RAPID},
+   volume = {126},
+   year = {2020},
+}
 
 @misc{Carlo2012,
    author = {Monte Carlo and Forrest B Brown and Sean E Carney and Brian C Kiedrowski and William R Martin},
@@ -264,6 +328,42 @@ abstract = {The Serpent Monte Carlo code has been in public distribution for 15 
    year = {2024},
 }
 
+
+
+
+
+@article{He2023,
+   abstract = {The Monte Carlo neutron transport method is widely used in small advanced reactor core designs and optimizations but with a high computational cost. As an efficient and accurate neutron transport method, the combined fission matrix method is promising in small reactor design and optimization. However, it cannot well predict the strong reflector impact on the fission matrix in small reactors. A predictor–corrector correction ratio method is proposed in this work to solve the problem. The method will be validated in the Holos and Simons transportable small reactors. Compared to the Monte Carlo result, the combined fission matrix method has a 36 pcm keff error with 1.7% 2D RMSE in the Holos core and 9 pcm keff error with 0.3% 2D RMSE in the Simons core. With a similar accuracy, the combined fission matrix method is much faster than the Monte Carlo method.},
+   author = {Donghao He and Yuehang Li and Tengfei Zhang and Xiaojing Liu},
+   doi = {10.1016/j.anucene.2022.109488},
+   issn = {18732100},
+   journal = {Annals of Nuclear Energy},
+   keywords = {Fission matrix,Monte Carlo calculation,Small advanced reactor},
+   month = {1},
+   publisher = {Elsevier Ltd},
+   title = {The development of the combined fission matrix method in small advanced reactor design and optimization},
+   volume = {180},
+   year = {2023},
+}
+@article{Haghighat2018,
+   author = {Alireza Haghighat},
+   title = {A Novel Detector Response Formulation for RAPID},
+   url = {https://www.researchgate.net/publication/326250674},
+   year = {2018},
+}
+@article{Mascolino2022_triga,
+   abstract = {The Real-time Analysis for Particle-transport and In-situ Detection (RAPID) Code System, developed based on the Multi-stage Response-function Transport (MRT) methodology, allows for real-time simulation of nuclear systems such as reactor cores, spent nuclear fuel pools and casks, and subcritical facilities. This paper presents a novel methodology for modeling control rods movement within the RAPID's Fission Matrix (FM) formulation. This methodology, referred to as FM Control Rods “deltas” (FM-CRd), allows for combination and interpolation of RAPID's FM coefficients to take into account the effect of inserting the control rods into the reactor core, while simultaneously limiting the amount of pre-calculations required. The FM-CRd methodology is benchmarked against experimental data from the JSI TRIGA ICSBEP benchmark and reference Serpent continuous-energy Monte Carlo calculations. The results show that RAPID's FM-CRd can accurately calculate 3-D fission source distribution and keff in the JSI TRIGA in a matter of seconds, hence constituting a powerful analysis tool for online analysis of the reactor during experiments.},
+   author = {Valerio Mascolino and Alireza Haghighat and Luka Snoj},
+   doi = {10.1016/j.anucene.2021.108711},
+   issn = {18732100},
+   journal = {Annals of Nuclear Energy},
+   keywords = {Control rods,Fission matrix,MRT,RAPID,Validation},
+   month = {2},
+   publisher = {Elsevier Ltd},
+   title = {Development and validation of new algorithms for control rods insertion modeling in the RAPID code system using the JSI TRIGA Mark-II reactor},
+   volume = {166},
+   year = {2022},
+}
 @article{Carney2014,
    abstract = {The fission matrix method can be used to provide estimates of the fundamental mode fission distribution, the dominance ratio, the eigenvalue spectrum, and higher mode forward and adjoint eigenfunctions of the fission distribution. It can also be used to accelerate the convergence of power method iterations and to provide basis functions for higher-order perturbation theory. The higher-mode fission sources can be used to determine higher-mode forward fluxes and tallies, and work is underway to provide higher-mode adjoint-weighted fluxes and tallies. These aspects of the method are here both theoretically justified and demonstrated, and then used to investigate fundamental properties of the transport equation for a continuous-energy physics treatment. Implementation into the MCNP6 Monte Carlo code is also discussed, including a sparse representation of the fission matrix, which permits much larger and more accurate representations. Properties of the calculated eigenvalue spectrum of a 2D PWR problem are discussed: for a fine enough mesh and a sufficient degree of sampling, the spectrum both converges and has a negligible imaginary component. Calculation of the fundamental mode of the fission matrix for a fuel storage vault problem shows how convergence can be accelerated by over a factor of ten given a flat initial distribution. Forward fluxes and the relative uncertainties for a 2D PWR are shown, both of which qualitatively agree with expectation. Lastly, eigenmode expansions are performed during source convergence of the 2D PWR problem for two initial distributions; observed decay rates of coefficients agree closely with expectation.},
    author = {Sean Carney and Forrest Brown and Brian Kiedrowski and William Martin},
@@ -306,15 +406,69 @@ abstract = {The Serpent Monte Carlo code has been in public distribution for 15 
    volume = {192},
    year = {2018},
 }
-
-@phdthesis{Rau2020,
-   author = {Adam Rau},
-   title = {Fission Matrix Methods for Temperature and Control Feedback of Small Nuclear Systems},
-   type = {Ph.D. thesis},
-   school = {The Pennsylvania State University},
+@article{He2019,
+   abstract = {The recently developed RAPID code uses a unique pre-calculated fission matrix method in order to solve the whole-core eigenvalue problem very quickly and accurately. However, in strongly heterogeneous cores, errors are introduced at the boundary between different assembly types. In this paper, two methods are discussed that uses a set of small, 2D, 2×2 assembly fixed source fission matrix calculations in order to correct the RAPID 3-D whole-core fission matrix. The methods are applied to the BEAVRS benchmark hot zero power case with 1.6%, 2.4%, and 3.1% enriched assemblies with varying amounts of burnable absorbers. The standard and corrected RAPID methods are compared to a Serpent reference case on this highly heterogeneous core. Compared to the standard, the locally-corrected RAPID drops the 2D RMS pin-wise fission source error from 6.3% to 0.54% (compared to a Serpent RMS uncertainty of 0.09%). The 3D, pin-wise, 100 axial level RMS error drops from 6.6% to 2.2% (Serpent RMS uncertainty 1.9%). The k-eigenvalue difference drops from 157 pcm to 26 pcm (Serpent uncertainty 0.5 pcm). In order to obtain these levels of uncertainty, the Serpent reference required a calculation time of 80 h on 20 cores, compared to a RAPID time of 2.4 min on the same system. Though the RAPID database requires roughly 16 h on 20 cores, it can be used for any other RAPID calculations without performing any new Monte Carlo calculations.},
+   author = {Donghao He and William J. Walters},
+   doi = {10.1016/j.anucene.2019.06.008},
+   issn = {18732100},
+   journal = {Annals of Nuclear Energy},
+   keywords = {Fission matrix,Hybrid transport,RAPID,Whole-core transport},
+   month = {12},
+   pages = {263-272},
+   publisher = {Elsevier Ltd},
+   title = {A local fission matrix correction method for heterogeneous whole core transport with RAPID},
+   volume = {134},
+   year = {2019},
+}
+@article{He2020,
+   abstract = {The RAPID hybrid transport code, based on the fission matrix method, has been developed and previously proven successful on BEAVRS benchmark at hot-zero-power condition. In this work, it is extended to the BEAVRS model to include fuel and moderator temperature feedback. The bi-linear fission matrix interpolation technique was applied to several artificial fuel and moderator temperature distributions. For almost all cases, it provides an accurate calculation result with a keff difference smaller than 70 pcm and 2D pin-wise RMS error smaller than 1% compared to Serpent 2 Monte Carlo reference. In order to decrease the number of databases needed, a plane interpolation routine is developed, which de-couples the fuel and moderator temperature. The RAPID calculation with the plane interpolation reports a similar accuracy to that with the bi-linear interpolation. The bi-linear interpolation required 24 database points from Monte Carlo calculations, while the plane interpolation only needed 10. The plane interpolation allows RAPID to prepare fewer databases while preserving a high accuracy.},
+   author = {Donghao He and William J. Walters},
+   doi = {10.1016/j.anucene.2020.107685},
+   issn = {18732100},
+   journal = {Annals of Nuclear Energy},
+   keywords = {Fission matrix,RAPID,Temperature feedback},
+   month = {12},
+   publisher = {Elsevier Ltd},
+   title = {Development of RAPID transport calculation with heterogeneous temperature distribution},
+   volume = {148},
    year = {2020},
 }
+@misc{Wang2018,
+   abstract = {A novel real-time detector response calculation methodology, referred to as Detector Response Function (DRF) methodology, has been developed and incorporated into the RAPID (Real-time Analysis for Particle transport and In-situ Detection) code system. The DRFs are pre-calculated by performing a series of fixed-source Monte Carlo calculations using the CADIS (Consistent Adjoint Driven Importance Sampling) variance reduction technique. These DRFs are in turn used to determine a detector response. The methodology is applied to a 3 He detector placed on the stainless-steel canister outer surface of the GBC-32 Cask benchmark. This paper demonstrates that RAPID's new DRF methodology yields accurate solutions in real time.},
+   author = {Jen Wang and Alireza Haghighat},
+   keywords = {CADIS,DRF methodology,Detector Response,Field-of-View,Monte Carlo},
+   title = {A Novel Detector Response Formulation for RAPID Alireza Haghighat Virginia Tech A Novel Detector Response Formulation for RAPID},
+   url = {https://www.researchgate.net/publication/326250674},
+   year = {2018},
+}
 
+@misc{,
+   title = {USE OF THE FISSION MATRIX FOR STEADY STATE AND QUASI-STATIC KINETIC MODELING OF THE TREAT REACTOR WITH TEMPERATURE FEEDBACK},
+   year = {2019},
+}
+@article{He2020,
+   abstract = {The fission matrix based radiation transport code RAPID is able to perform high fidelity and fast 3D, pin-wise whole core calculations. The code can quickly estimate the system fission matrix by combining pre-calculated database fission matrices, and solving for the system fission matrix provides the multiplication factor and a detailed fission distribution. In this work, RAPID acceleration and numerical techniques will be examined. These are the fission matrix collapsing or homogenization options, choice of the power iteration tolerance and estimation of iterative error. In old RAPID calculations, in order to achieve a fast power iteration convergence of the whole core fission matrix, the pin-wise fission matrix is collapsed into an assembly-wise one following a 2-D pin-wise core slice calculation. In addition to the radial collapsing from pin to assembly, other radial and axial collapsing options are tested to find out the best balance between accuracy and speedup. Applying the fission matrix collapsing technique, RAPID requires at least two eigenvalue calculations. Different tolerances of the 2-D and 3-D power iteration calculations are combined to investigate the convergence. A more sophisticated method to estimate the iterative error is provided to determine the convergence. Overall, a combination of all acceleration techniques speeds up the RAPID calculation on BEAVRS benchmark problem by three times, with only a negligible loss of accuracy.},
+   author = {Donghao He and William J. Walters},
+   doi = {10.1016/j.pnucene.2020.103407},
+   issn = {01491970},
+   journal = {Progress in Nuclear Energy},
+   keywords = {Acceleration,Fission matrix,RAPID},
+   month = {8},
+   publisher = {Elsevier Ltd},
+   title = {Fission matrix homogenization and iterative convergence in RAPID},
+   volume = {126},
+   year = {2020},
+}
+@misc{Rau2020,
+   author = {Adam Rau},
+   title = {FISSION MATRIX METHODS FOR TEMPERATURE AND CONTROL FEEDBACK OF SMALL NUCLEAR SYSTEMS},
+   year = {2020},
+}
+@misc{Carlo2012,
+   author = {Monte Carlo and Forrest B Brown and Sean E Carney and Brian C Kiedrowski and William R Martin},
+   title = {Title: Fission Matrix Capability for MCNP Intended for},
+   year = {2012},
+}
 @article{Topham2020,
    abstract = {Although Monte Carlo simulations are the most accurate representation of nuclear reactor cores, they can be computationally expensive. This computational expense can prohibit the use of Monte Carlo in situations that require sequences of neutronics calculations, such as accounting for temperature feedback. In the present work, we demonstrate a fission matrix methodology to calculate the fission source in the Penn State Breazeale Reactor while accounting for control rod movement and fuel temperature feedback. A fission matrix A, represents the rate of fission neutron production in a reactor core, where the aij entry of the matrix is equal to the neutrons produced in cell i per neutron born from cell j. The fission source distribution and multiplication factor keff are the principle eigenvector and principle eigenvalue, respectively, of the fission matrix. Given a varied core temperature distribution, a new fission matrix can be obtained by interpolating from a database of pre-calculated fission matrices. This approach shows promise in accurately and quickly calculating the reactivity and fission source distributions for a system with an arbitrary temperature distribution. In the present work, the largest resulting relative error of the calculated power distribution per pin was 1.52% compared to a Serpent criticality simulation, and all calculated eigenvalues were within 50 pcm, which corresponds to 0.1–0.4 cm of rod insertion depending on whether rods are inserted in the center or edge of the core. In contrast, the critical rod position varies by 13.49 cm for the cases considered (0–650 kW). The present database is composed of data from 78 Monte Carlo calculations, but enables subsequent neutronics calculations to be done in a fraction of a second. Future work would be to implement correction factors for neighboring temperature differences in three-dimensional models, incorporate xenon feedback, and investigate ways to decrease database size.},
    author = {Tyler J. Topham and Adam Rau and William J. Walters},
@@ -327,15 +481,4 @@ abstract = {The Serpent Monte Carlo code has been in public distribution for 15 
    title = {An iterative fission matrix scheme for calculating steady-state power and critical control rod position in a TRIGA reactor},
    volume = {135},
    year = {2020},
-}
-
-@article{Walters_uncertainty,
-   author = {Donghao He and William Walters},
-   title = {Development of Uncertainty Analysis Techniques for the Fission Matrix--Based Neutron Transport Code RAPID},
-   journal = {Nuclear Science and Engineering},
-   volume = {196},
-   number = {9},
-   pages = {1101--1113},
-   year = {2022},
-   doi = {10.1080/00295639.2022.2049991},
 }
