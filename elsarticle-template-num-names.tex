@@ -701,7 +701,7 @@ The temperature distributions of the three new cases are shown in \cref{fig:case
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.40]{images/cases_5_6_7_temperature_distributions.png}  % Modifica scale o usa width se serve
+\includegraphics[scale=0.4]{images/cases_5_6_7_temperature_distributions.png}  % Modifica scale o usa width se serve
 \caption{Temperature distributions of the fuel and reflector assemblies for Cases 5, 6 and 7. The assemblies of a sextant are removed to see the temperature of the innermost cells.}
 \label{fig:cases_5_6_7_temperature_distributions}
 \end{figure}
@@ -776,11 +776,11 @@ The seven test cases discussed so far are now used to quantify the statistical n
 
 \begin{table}[h!]
 \FloatBarrier
-\caption{Uncertainty budget of the interpolated results. $\sigma_{k}$ refers to the multiplication factor, $\sigma_{\tilde{F}}$ to the fission source, averaged over the ninety cells. The two contributions are combined in quadrature before rounding, and for the fission source the combination is performed cell by cell and then averaged, so the tabulated combined values may differ by one unit in the last digit from the quadrature of the rounded entries.}
+\caption{\rtwo{Uncertainty budget of the interpolated results. $\sigma_{k}$ refers to the multiplication factor, $\sigma_{\tilde{F}}$ to the fission source, averaged over the ninety cells. The two contributions --- from the reference case (ref), and from the database (DB)  --- are combined in $\sigma_{tot}$, and for the fission source the combination is performed cell by cell and then averaged.}}
 \centering
 \begin{tabular}{lcccccc}
 \hline
- & $\sigma_{k}$ reference & $\sigma_{k}$ database & $\sigma_{k}$ combined & $\sigma_{\tilde{F}}$ reference & $\sigma_{\tilde{F}}$ database & $\sigma_{\tilde{F}}$ combined \\
+ & $\sigma_{ref,k}$ & $\sigma_{DB,k}$  & $\sigma_{tot,k}$ & $\sigma_{ref,\tilde{F}}$ & $\sigma_{DB,\tilde{F}}$ & $\sigma_{tot,\tilde{F}}$  \\
  & (pcm) & (pcm) & (pcm) & (\%) & (\%) & (\%) \\ \hline
 Case 1 & 18 & 21 & 28 & 0.20 & 0.38 & 0.43 \\
 Case 2 & 18 & 21 & 27 & 0.21 & 0.37 & 0.42 \\
